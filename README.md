@@ -210,9 +210,9 @@ _OR_
 		- 
 	So, from where we can get out instance *ip address* ? follow me
 	
-			-  Goto your instance. **COPY** the public IP address
+		-  Goto your instance. **COPY** the public IP address
 			
-				![public ip](https://imgur.com/JsdWHSw.png)
+		   ![public ip](https://imgur.com/JsdWHSw.png)
 
 	3. **copy the url and paste to your browser**
 	
