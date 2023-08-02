@@ -1,4 +1,8 @@
+
 #  React Docker ec2
+
+**in progress**
+
  > abstract: host dockerized react application on ec2
  
  ## Let's start
@@ -87,7 +91,7 @@ So, when the container starts, it will run the `react` application and listen on
 Now, as we got the undertsanding of `Dockerfile` 
 Now we will explore some commands to `create a Docker image` and a `Docker container`.
 
-1. **Create image from DockerFile**
+**Create image from DockerFile**
 ```bash  
 docker build -t react-counter .
 ``` 
@@ -96,7 +100,7 @@ docker build -t react-counter .
 -   `.`: This indicates the current directory, where the Dockerfile (the configuration file that defines the image) is located. 
 	- Docker will look for the Dockerfile in the current directory and use it as a blueprint to create the image.
 
-2. **Create Container of Docker Image**
+**Create Container of Docker Image**
  ```bash 
  docker run -name counter1 -d -p 4000:3000 react-counter
 ```
@@ -109,34 +113,40 @@ docker build -t react-counter .
 -   `docker-img-id` or `docker-img-name`: This is the unique identifier (ID) of the Docker image that you want to run in the container. 
 	- Docker uses this ID to find the image and create a container from it.
 	
-3. **Open you browser**
+**Open you browser**
 
-	Enter the [URI](https://www.techtarget.com/whatis/definition/URI-Uniform-Resource-Identifier)
-	```bash
-	http://localhost:4000/
-	``` 
+Enter the [URI](https://www.techtarget.com/whatis/definition/URI-Uniform-Resource-Identifier) 
+	
+```http://localhost:4000/```
+	
 **ENJOY**
 
 --- 
 
+## EC2
 
 **Deploying the app on `ec2` instance**
   
 If you don't know how to create an `ec2` instance, you can follow [this](https://github.com/DevOpsProjectOps/create-ec2-instance)
 
 
-1. Login to your console and Instance
+**Login** to your console and Instance
 	
-2. Update packages
-	```bash 
-		sudo apt update
-	```
-	- When you run this command with administrative privileges (using "sudo"), your system will connect to the software repositories (online libraries) and check if there are any new versions or updates available for the installed software packages. 
-	- If updates are found, it will update the list of available packages on your system so that you can install the latest versions of the software later on if you wish. 
-	- This helps ensure that your software is up to date and running smoothly with the latest improvements and bug fixes.
+**Update packages**
+
+```bash 
+	sudo apt update
+```
+
+- When you run this command with administrative privileges (using "sudo"), your system will connect to the software repositories (online libraries) and check if there are any new versions or updates available for the installed software packages. 
+- If updates are found, it will update the list of available packages on your system so that you can install the latest versions of the software later on if you wish. 
+- This helps ensure that your software is up to date and running smoothly with the latest improvements and bug fixes.
+
+
+**Install `npm`**
 	
-3. **Install `Docker`**
-	You can follow [this]() blog to install docker.
+ **Install `Docker`**
+	You can follow [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04) blog to install docker.
 _OR_
 ```bash
 	curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/docker-archive-keyring.gpg >/dev/null
@@ -144,56 +154,71 @@ _OR_
 	sudo apt-get update
 	sudo apt-get install -y docker-ce
 ```
+---
 
-4. **Setup the react repo**
-		because, in above sections we tested this in out localsystem . 
-			Now its a BIG BOY time..
-			
-		- git is default installed in ubuntu instance.
+**Setup the react repo in `ec2`**
+
+because, in above sections we tested this in out localsystem . 
+
+Now its a **BIG BOY** time..
+
 		
-	RUN the command as we are managing our code in `git`
-	```bash 
-	git clone https://github.com/DevOpsProjectOps/react-counter.git
-	```
-	
-	- This command is used to create a copy of a Git repository from the URL provided. 
-	- It downloads all the files and version history from the remote repository to your local machine in our case its `ec2` instance
+- git is default installed in ubuntu instance.
+		
+**RUN** the command as we are managing our code in `git`
 
-		![vm image](https://imgur.com/yLVReZ1.png)
+```bash 
+	git clone https://github.com/asPerRequrements/react-counter.git
+```
+	
+- This command is used to create a copy of a Git repository from the URL provided. 
+- It downloads all the files and version history from the remote repository to your local machine in our case its `ec2` instance
+
+	![vm image](https://imgur.com/yLVReZ1.png)
+		
 	
 	- Linux commands
 		- ls -> List all the files and folders
-		- cd -> change directory
-		
-5. **Build docker Image**  
-	```bash
-		docker build -t react-counter .
-	```
-	- `.` is the location of Dockerfile, as we are in the same folder of dockerfile we use `.` .
+		- cd -> change directory	
+
+---
+
+
+ **Build docker Image** 
+ 
+```bash
+	docker build -t react-counter .
+```
 	
-		![docker image build](https://imgur.com/DuCb9tz.png)
+- `.` is the location of Dockerfile, as we are in the same folder of dockerfile we use `.` .
+	
+	![docker image build](https://imgur.com/DuCb9tz.png)
 
-		command explaied above 😅
+	command explained above 😅
 
-6. **Create docker container**
-	```bash
+**Create docker container**
+
+```bash
 		docker run -name counter1 -d -p 4000:3000 react-counter
-	```
+```
 	
-	![docker container]()
+![docker container]()
 	
 	command explaied above 😅
 
-	1) **Check docker images**
-		```bash 
+1) **Check docker images**
+	```bash 
 		docker images ls
-		```
-	2) **Check all containers**
-		```bash 
+	```
+	![docker images]()
+2) **Check all containers**
+	```bash 
 		docker ps -a
-		```
-		
+	```
+	![Docker containers]()
+	
 	---
+	
 7.  Now, above we accessed the application using ```
 		http://localhost:4000/```
 		
@@ -203,17 +228,16 @@ _OR_
 	
 	1. So, we will use the **IP address** of ec2 Instance.
 	
-			-	What is **Ip address**  ?
-		- An IP address is like a special number given to each computer, so they can talk and share things with each other on the internet. 
-		- It's like your computer's phone number on the internet! 	
-		- 
-	So, from where we can get out instance *ip address* ? follow me
+		-	What is **Ip address**  ?
+			- An IP address is like a special number given to each computer, so they can talk and share things with each other on the internet. 
+			- It's like your computer's phone number on the internet! 	
 	
-		-  Goto your instance. **COPY** the public IP address
-			
-		   ![public ip](https://imgur.com/JsdWHSw.png)
+	from where we can get out instance *ip address* ? follow me
+	
+	-  Goto your instance. **COPY** the public IP address
+		  ![public ip](https://imgur.com/JsdWHSw.png)
 
-	3. **copy the url and paste to your browser**
+	2. **copy the url and paste to your browser**
 	
 		modify it will ```http://ip-address:4000```
 		
@@ -247,7 +271,8 @@ _OR_
 		Now, new inbond rule is set.
 		
 		
-	6. **GOTO web brower and check the application  status**
-		It should bu running
+**GOTO web brower and check the application  status**
+	```https://ip-address:4000```	
+It should bu running
 
 ## ENJOY
