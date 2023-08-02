@@ -124,6 +124,7 @@ docker build -t react-counter .
   
 If you don't know how to create an `ec2` instance, you can follow [this](https://github.com/DevOpsProjectOps/create-ec2-instance)
 
+
 1. Login to your console and Instance
 			![console login](https://imgur.com/HsZxkAq.png)
 	
