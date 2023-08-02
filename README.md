@@ -124,8 +124,8 @@ docker build -t react-counter .
   
 If you don't know how to create an `ec2` instance, you can follow [this](https://github.com/DevOpsProjectOps/create-ec2-instance)
 
-1. Logint to your console and Instance
-	![console login](https://imgur.com/HsZxkAq.png)
+1. Login to your console and Instance
+			![console login](https://imgur.com/HsZxkAq.png)
 	
 2. Update packages
 	```bash 
@@ -139,7 +139,6 @@ If you don't know how to create an `ec2` instance, you can follow [this](https:/
 	You can follow [this]() blog to install docker.
 _OR_
 ```bash
-Install Docker:
 	curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/docker-archive-keyring.gpg >/dev/null
 	echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list
 	sudo apt-get update
@@ -147,12 +146,14 @@ Install Docker:
 ```
 
 4. **Setup the react repo**
-		because, in above sections we tested this in out localsystem . Now its a BIG BOY time..
+		because, in above sections we tested this in out localsystem . 
+			Now its a BIG BOY time..
+			
 		- git is default installed in ubuntu instance.
 		
 	RUN the command as we are managing our code in `git`
 	```bash 
-		git clone https://github.com/DevOpsProjectOps/react-counter.git
+	git clone https://github.com/DevOpsProjectOps/react-counter.git
 	```
 	
 	- This command is used to create a copy of a Git repository from the URL provided. 
@@ -201,16 +202,19 @@ Install Docker:
 	at this section, we are not on our `localsystem`, we are _inside_ `ec2` instance, we re grown up we _are_ **BIG BOY** now
 	
 	1. So, we will use the **IP address** of ec2 Instance.
+	
 			-	What is **Ip address**  ?
 		- An IP address is like a special number given to each computer, so they can talk and share things with each other on the internet. 
 		- It's like your computer's phone number on the internet! 	
 		- 
-	So, from where we can get out instance ip address ? follow me
+	So, from where we can get out instance *ip address* ? follow me
+	
 			-  Goto your instance. **COPY** the public IP address
-			- 
+			
 				![public ip](https://imgur.com/JsdWHSw.png)
 
-	2. **copy the url and paste to your browser**
+	3. **copy the url and paste to your browser**
+	
 		modify it will ```http://ip-address:4000```
 		
 		but you will get an error.
@@ -220,7 +224,7 @@ Install Docker:
 
 		Now, we have **new mission** to `enable` the inbound rules
 	
-	3. **Enable Inbound rules**
+	5. **Enable Inbound rules**
 		1. Scroll down the page and click on the `security` section
 			![security](https://imgur.com/87MgtjG.png) 
 		2.  Click on the **security group** marked in *red box*
@@ -239,9 +243,11 @@ Install Docker:
 			
 		![](https://imgur.com/7RUnqCs.png)
 
+	
 		Now, new inbond rule is set.
 		
-	4. **GOTO web brower and check the application  status**
+		
+	6. **GOTO web brower and check the application  status**
 		It should bu running
 
-### ENJOY
+## ENJOY
